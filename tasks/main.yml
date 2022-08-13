@@ -1,7 +1,7 @@
 ---
 
 - name: Ensure apt requirements
-  package:
+  ansible.builtin.package:
     name: apt-transport-https
     state: present
 
@@ -19,6 +19,5 @@
 - name: Install Sublime-Text
   ansible.builtin.apt:
     name: sublime-text
-    update_cache: yes
+    update_cache: true
     state: present
-
