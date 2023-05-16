@@ -26,4 +26,9 @@
     path: /usr/share/applications/mimeapps.list
     insertafter: "[Default Applications]"
     line: "{{ item.key }}={{ item.value }}"
+    state: present
+    create: true
+    mode: "0644"
+    owner: root
+    group: root
   loop: "{{ sublime_mimetypes | dict2items }}"
