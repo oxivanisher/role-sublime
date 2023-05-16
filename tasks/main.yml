@@ -21,14 +21,20 @@
     update_cache: true
     state: present
 
+- name: Configure defaults file
+  ansible.builtin.lineinfile:
+    path: /usr/share/applications/mimeapps.list
+    line: "[Default Applications]"
+    state: present
+    create: true
+    mode: "0644"
+    owner: root
+    group: root
+
 - name: Set Sublime as default editor
   ansible.builtin.lineinfile:
     path: /usr/share/applications/mimeapps.list
     insertafter: "[Default Applications]"
     line: "{{ item.key }}={{ item.value }}"
     state: present
-    create: true
-    mode: "0644"
-    owner: root
-    group: root
   loop: "{{ sublime_mimetypes | dict2items }}"
