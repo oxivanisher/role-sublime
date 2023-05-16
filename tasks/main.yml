@@ -34,7 +34,7 @@
     - "[Default Applications]"
     - "[Added Associations]"
 
-- name: Set Sublime as default editor
+- name: Set Sublime default application
   ansible.builtin.lineinfile:
     path: /usr/share/applications/mimeapps.list
     insertbefore: "[Added Associations]"
@@ -42,7 +42,7 @@
     state: present
   loop: "{{ sublime_mimetypes | dict2items }}"
 
-- name: Set Sublime as default editor
+- name: Set Sublime added associations
   ansible.builtin.lineinfile:
     path: /usr/share/applications/mimeapps.list
     insertafter: "[Added Associations]"
