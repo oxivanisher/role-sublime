@@ -49,4 +49,5 @@
     insertafter: "[Added Associations]"
     line: "{{ item.key }}={{ item.value }}"
     state: present
+    firstmatch: true
   loop: "{{ sublime_mimetypes | dict2items }}"
