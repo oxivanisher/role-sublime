@@ -37,7 +37,6 @@
 - name: Set Sublime as default editor
   ansible.builtin.lineinfile:
     path: /usr/share/applications/mimeapps.list
-    insertafter: "[Default Applications]"
     insertbefore: "[Added Associations]"
     line: "{{ item.key }}={{ item.value }}"
     state: present
