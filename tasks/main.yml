@@ -47,7 +47,7 @@
   ansible.builtin.lineinfile:
     path: /usr/share/applications/mimeapps.list
     insertafter: "Added Associations"
-    line: "{{ item }}=sublime_text.desktop"
+    line: "{{ item }}=sublime_text.desktop;"
     state: present
     firstmatch: true
   loop: "{{ sublime_mimetypes | sort }}"
