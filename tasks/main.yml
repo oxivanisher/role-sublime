@@ -1,5 +1,4 @@
 ---
-
 - name: Ensure apt requirements
   ansible.builtin.package:
     name: apt-transport-https
@@ -21,3 +20,10 @@
     name: sublime-text
     update_cache: true
     state: present
+
+- name: Set Sublime as default editor
+  ansible.builtin.lineinfile:
+    path: /usr/share/applications/mimeapps.list
+    insertafter: "[Default Applications]"
+    line: "{{ item.key }}={{ item.value }}"
+  loop: "{{ sublime_mimetypes | dict2items }}"

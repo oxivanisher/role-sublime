@@ -1,2 +1,6 @@
 ---
-# vars file for sublime
+sublime_mimetypes:
+  application/xhtml+xml: sublime_text.desktop
+  application/x-mswinurl: sublime_text.desktop
+  text/markdown: sublime_text.desktop
+  text/plain: sublime_text.desktop
