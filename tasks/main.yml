@@ -37,17 +37,17 @@
 - name: Set Sublime default application
   ansible.builtin.lineinfile:
     path: /usr/share/applications/mimeapps.list
-    insertbefore: "^[Added Associations]$"
-    line: "{{ item.key }}={{ item.value }}"
+    insertbefore: "Added Associations"
+    line: "{{ item }}=sublime_text.desktop"
     state: present
     firstmatch: true
-  loop: "{{ sublime_mimetypes | dict2items }}"
+  loop: "{{ sublime_mimetypes | sort }}"
 
 - name: Set Sublime added associations
   ansible.builtin.lineinfile:
     path: /usr/share/applications/mimeapps.list
-    insertafter: "^[Added Associations]$"
-    line: "{{ item.key }}={{ item.value }}"
+    insertafter: "Added Associations"
+    line: "{{ item }}=sublime_text.desktop"
     state: present
     firstmatch: true
-  loop: "{{ sublime_mimetypes | dict2items }}"
+  loop: "{{ sublime_mimetypes | sort }}"
