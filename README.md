@@ -3,6 +3,14 @@ sublime
 
 This role installs sublime text and sets it as default app for supported mit types.
 
+
+Role Variables
+--------------
+
+| Name          | Comment                              | Default value |
+|---------------|--------------------------------------|---------------|
+| sublime_os_users  | Users for which sublime will be set the default app for.  | `[]`          |
+
 Example Playbook
 ----------------
 ```yaml

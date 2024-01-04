@@ -15,8 +15,15 @@
     update_cache: true
     state: present
 
-- name: Set Sublime default application
-  community.general.gio_mime:
-    mime_type: "{{ item }}"
-    handler: sublime_text.desktop
-  loop: "{{ sublime_mimetypes }}"
+- name: Configure sublime as default application
+  block:
+    - name: Set Sublime default application
+      community.general.gio_mime:
+        mime_type: "{{ item }}"
+        handler: sublime_text.desktop
+      loop: "{{ sublime_mimetypes }}"
+      become: true
+      become_user: "{{ os_user }}"
+
+  loop: "{{ sublime_os_users }}"
+  loop_var: os_user
