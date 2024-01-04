@@ -4,6 +4,7 @@
     mime_type: "{{ mimetype }}"
     handler: sublime_text.desktop
   loop: "{{ sublime_mimetypes }}"
-  loop_var: mimetype
+  loop_control:
+    loop_var: mimetype
   become: true
   become_user: "{{ item }}"
