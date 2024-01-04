@@ -16,5 +16,5 @@
     state: present
 
 - name: Configure sublime as default application
-  include_tasks: set_default_app.yml
+  ansible.builtin.include_tasks: set_default_app.yml
   loop: "{{ sublime_os_users }}"
