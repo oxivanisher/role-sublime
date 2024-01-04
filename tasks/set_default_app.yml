@@ -1,8 +1,9 @@
 ---
 - name: Set Sublime default application
   community.general.gio_mime:
-    mime_type: "{{ item }}"
+    mime_type: "{{ mimetype }}"
     handler: sublime_text.desktop
   loop: "{{ sublime_mimetypes }}"
+  loop_var: mimetype
   become: true
-  become_user: "{{ os_user }}"
+  become_user: "{{ item }}"
