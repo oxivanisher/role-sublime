@@ -4,3 +4,4 @@ sublime_mimetypes:
   - application/x-mswinurl
   - text/markdown
   - text/plain
+  - text/x-log
