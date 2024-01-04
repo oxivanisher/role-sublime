@@ -15,33 +15,8 @@
     update_cache: true
     state: present
 
-- name: Configure defaults file
-  ansible.builtin.lineinfile:
-    path: /usr/share/applications/mimeapps.list
-    line: "{{ item }}"
-    state: present
-    create: true
-    mode: "0644"
-    owner: root
-    group: root
-  loop:
-    - "[Default Applications]"
-    - "[Added Associations]"
-
 - name: Set Sublime default application
-  ansible.builtin.lineinfile:
-    path: /usr/share/applications/mimeapps.list
-    insertbefore: "Added Associations"
-    line: "{{ item }}=sublime_text.desktop"
-    state: present
-    firstmatch: true
-  loop: "{{ sublime_mimetypes | sort }}"
-
-- name: Set Sublime added associations
-  ansible.builtin.lineinfile:
-    path: /usr/share/applications/mimeapps.list
-    insertafter: "Added Associations"
-    line: "{{ item }}=sublime_text.desktop;"
-    state: present
-    firstmatch: true
-  loop: "{{ sublime_mimetypes | sort }}"
+  community.general.gio_mime:
+    mime_type: "{{ item }}"
+    handler: sublime_text.desktop
+  loop: "{{ sublime_mimetypes }}"
