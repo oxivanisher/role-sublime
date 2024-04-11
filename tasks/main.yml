@@ -8,12 +8,16 @@
     signed_by: https://download.sublimetext.com/sublimehq-pub.gpg
     state: present
     enabled: true
+  become: true
+  become_user: root
 
 - name: Install Sublime-Text
   ansible.builtin.apt:
     name: sublime-text
     update_cache: true
     state: present
+  become: true
+  become_user: root
 
 - name: Configure sublime as default application
   ansible.builtin.include_tasks: set_default_app.yml
