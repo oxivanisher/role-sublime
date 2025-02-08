@@ -1,5 +1,6 @@
 sublime
 =======
+[![Ansible Lint](https://github.com/oxivanisher/role-sublime/actions/workflows/ansible-lint.yml/badge.svg)](https://github.com/oxivanisher/role-sublime/actions/workflows/ansible-lint.yml)
 
 This role installs sublime text and sets it as default app for supported mit types.
 
