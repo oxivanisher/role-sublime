@@ -16,6 +16,7 @@
     name: sublime-text
     update_cache: true
     state: present
+  ignore_errors: "{{ ansible_check_mode }}"
   become: true
   become_user: root
 
